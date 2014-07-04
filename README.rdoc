@@ -1,0 +1,3 @@
+= centosadmin_redmine_plugin
+
+Description goes here
