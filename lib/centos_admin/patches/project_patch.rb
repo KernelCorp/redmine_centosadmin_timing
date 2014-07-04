@@ -1,25 +1,30 @@
 require_dependency 'project'
 
-# Patches Redmine's Project dynamically.
 module CentosAdmin
   module Patches
     module ProjectPatch
       def self.included(base)
-        base.send(:include, InstanceMethods)
-
-        base.class_eval do
-
-        end
+        base.send :include, InstanceMethods
       end
 
       module InstanceMethods
+        def managers
+          managers_roles = Setting.plugin_centosadmin_redmine_plugin['managers_roles'].split ' '
+
+          members.select do |member|
+            member.roles.any? do |role|
+              managers_roles.include? role.name
+            end
+          end
+        end
+
         def has_little_time?
-          #TODO check time reserve
+          time_reserve != 0 && time_reserve < time_entries.sum(:hours) + 2.0
         end
       end
     end    
   end
 end
 
-Project.send(:include, ProjectPatch)
-Project.safe_attributes 'time_reserve'
+Project.send :include, CentosAdmin::Patches::ProjectPatch
+Project.safe_attributes :time_reserve, :time_reminder_sended
