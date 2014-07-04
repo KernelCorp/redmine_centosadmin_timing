@@ -4,20 +4,20 @@ require_dependency 'project'
 module CentosAdmin
   module Patches
     module ProjectPatch
-      def self.included(base) # :nodoc
+      def self.included(base)
         base.send(:include, InstanceMethods)
 
         base.class_eval do
 
         end
       end
-    end
 
-    module InstanceMethods
-      def has_little_time?
-        #TODO check time reserve
+      module InstanceMethods
+        def has_little_time?
+          #TODO check time reserve
+        end
       end
-    end
+    end    
   end
 end
 
