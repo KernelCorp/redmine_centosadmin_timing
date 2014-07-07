@@ -1,7 +1,6 @@
 require File.expand_path('../../test_helper', __FILE__)
-require 'mocha/test_unit'
 
-class TimeEntryPatchTest < ActionController::TestCase
+class TimeEntryPatchTest < ActiveSupport::TestCase
   fixtures :projects,
            :users,
            :roles,
@@ -12,12 +11,22 @@ class TimeEntryPatchTest < ActionController::TestCase
   def test_check_project_time_reserve
     project = Project.first
     start = project.time_entries.sum :hours
-    entry = project.time_entries.first
 
-    CentosAdmin::TimeMailer.stubs(:little_time).returns(nil)
+    [ 
+      0.0,
+      start-1,
+      start+3,
+      start+1 
+    ]
+    .each do |time_reserve|
+      project.update_attributes! time_reserve: time_reserve, time_reminder_sended: false
+      project.reload
+      entry = project.time_entries.first
 
-    entry.update_attributes hours: entry.hours
-
-    assert true
+      assert_difference 'ActionMailer::Base.deliveries.size', ( project.has_little_time? ? +1 : 0 ) do
+        entry.update_attributes! hours: entry.hours
+        project.reload
+      end
+    end
   end
 end

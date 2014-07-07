@@ -1,6 +1,6 @@
 require File.expand_path('../../test_helper', __FILE__)
 
-class ProjectPatchTest < ActionController::TestCase
+class ProjectPatchTest < ActiveSupport::TestCase
   fixtures :projects,
            :users,
            :roles,
@@ -11,7 +11,8 @@ class ProjectPatchTest < ActionController::TestCase
   def test_managers
     project = Project.first
 
-    assert_equal project.members.count, 2
+    assert project.members.count == 2
+    assert project.members.map{|m|m.roles.map{|r|r.name}} == [ ['Manager'],['Developer'] ]
 
     managers = project.managers
 

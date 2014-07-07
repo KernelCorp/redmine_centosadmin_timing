@@ -3,7 +3,7 @@ require_dependency 'time_entry'
 module CentosAdmin
   module Patches
     module TimeEntryPatch
-      def self.included(base)
+      def self.included( base )
         base.send :include, InstanceMethods
 
         base.class_eval do
@@ -15,8 +15,10 @@ module CentosAdmin
         def check_project_time_reserve
           if project.has_little_time? != project.time_reminder_sended
             if project.time_reminder_sended == false
-              TimeMailer.little_time(project).tap{ |mail| mail && mail.deliver }
-              project.update_attributes time_reminder_sended: true
+              CentosAdmin::TimeMailer.little_time(project).tap do |mail| 
+                mail && mail.deliver
+              end
+              project.update_attributes! time_reminder_sended: true
             end
           end
         end
@@ -25,4 +27,4 @@ module CentosAdmin
   end
 end
 
-TimeEntry.send :include, CentosAdmin::Patches::ProjectPatch
+TimeEntry.send :include, CentosAdmin::Patches::TimeEntryPatch
