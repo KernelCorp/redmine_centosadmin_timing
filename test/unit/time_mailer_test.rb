@@ -21,5 +21,7 @@ class CentosAdmin::TimeMailerTest < ActionMailer::TestCase
     assert email.to.size == 1
     assert email.to[0].blank? == false
     assert email.to == [ manager.user.mail ]
+
+    assert email.body.blank? == false
   end
 end
