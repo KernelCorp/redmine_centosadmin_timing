@@ -1,2 +1,4 @@
 ru:
+  centos_admin:
+    managers_roles: Уведомлять
   field_time_reserve: Запас времени

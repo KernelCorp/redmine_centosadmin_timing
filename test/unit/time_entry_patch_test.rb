@@ -12,6 +12,8 @@ class TimeEntryPatchTest < ActiveSupport::TestCase
     project = Project.first
     start = project.time_entries.sum :hours
 
+    puts TimeEntry.methods.include? :check_project_time_reserve
+
     [ 
       0.0,
       start-1,
