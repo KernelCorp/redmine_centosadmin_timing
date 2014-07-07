@@ -14,10 +14,8 @@ module CentosAdmin
       module InstanceMethods
         def check_project_time_reserve
           if project.has_little_time? != project.time_reminder_sended
-            if project.time_reminder_sended == false
-              CentosAdmin::TimeMailer.little_time(project).tap do |mail| 
-                mail && mail.deliver
-              end
+            unless project.time_reminder_sended
+              CentosAdmin::TimeMailer.little_time(project).deliver
               project.update_attributes! time_reminder_sended: true
             end
           end
