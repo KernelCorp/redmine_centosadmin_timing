@@ -9,7 +9,7 @@ module CentosAdmin
 
       module InstanceMethods
         def managers
-          managers_roles = Setting.plugin_centosadmin_redmine_plugin['managers_roles'].split ' '
+          managers_roles = Setting.plugin_centosadmin_redmine_plugin['managers_roles']
 
           members.select do |member|
             member.roles.any? do |role|

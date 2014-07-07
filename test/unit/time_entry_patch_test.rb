@@ -28,5 +28,13 @@ class TimeEntryPatchTest < ActiveSupport::TestCase
         project.reload
       end
     end
+
+    project.update_attributes! time_reserve: start, time_reminder_sended: true
+    project.reload
+    entry = project.time_entries.first
+
+    assert_difference 'ActionMailer::Base.deliveries.size', 0 do
+      entry.update_attributes! hours: entry.hours
+    end
   end
 end

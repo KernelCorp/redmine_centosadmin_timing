@@ -3,12 +3,35 @@
     <tr>
       <th>Managers Roles</th>
       <td>
-        <input 
-          type="text"
-          id="settings_managers_roles"
-          name="settings[managers_roles]"
-          value="<%= settings['managers_roles'] %>"
-        >
+        <table>
+          <tbody>
+            <% Role.all.each_with_index do |role,i| %>
+              <tr>
+                <% id = "manager_#{i}" %>
+                <td>
+                  <input 
+                    type="checkbox"
+                    id="<%= id %>"
+                    name="settings[managers_roles][]"
+                    value="<%= role.name %>"
+                    <% if Setting.plugin_centosadmin_redmine_plugin['managers_roles'].include? role.name %>
+                      checked=true
+                    <% end %>
+                  >
+                </td>
+                <td>
+                  <label style='margin: 0px; float: none;' for="<%= id %>">
+                    <%= role.name %>
+                  </label>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        
+        
       </td>
     </tr>
   </tbody>
