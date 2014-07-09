@@ -15,6 +15,6 @@ Redmine::Plugin.register :redmine_centosadmin_timing do
   description 'This is a plugin for CentosAdmin'
   version '0.1.0'
   url 'https://github.com/olemskoi/redmine_centosadmin_timing'
-  author_url 'http://kerweb.ru/'
+  author_url 'http://centos-admin.ru/'
   settings default: { 'managers_roles' => 'Manager' }, partial: 'settings/centosadmin_redmine_settings'
 end
