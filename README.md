@@ -1,2 +1,24 @@
-centos-admin_redmine_plugin
+Redmine timing
 ===========================
+
+##Installation
+Clone repository to your redmine/plugins directory
+```
+git clone git://github.com/olemskoi/redmine_centosadmin_timing.git
+```
+
+Install dependencies
+```
+bundle install
+```
+
+Run migration
+```
+rake redmine:plugins:migrate
+```
+
+Restart redmine
+
+## Sponsors
+
+Work on this plugin was fully funded by [centos-admin.ru](http://centos-admin.ru)
