@@ -11,7 +11,7 @@ require_relative 'app/mailers/time_mailer'
 # Plugin
 Redmine::Plugin.register :redmine_centosadmin_timing do
   name 'Centosadmin Redmine Plugin plugin'
-  author 'Kernel Wed Studio'
+  author 'CentosAdmin'
   description 'This is a plugin for CentosAdmin'
   version '0.1.0'
   url 'https://github.com/olemskoi/redmine_centosadmin_timing'
