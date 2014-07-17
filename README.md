@@ -22,3 +22,5 @@ Restart redmine
 ## Sponsors
 
 Work on this plugin was fully funded by [centos-admin.ru](http://centos-admin.ru)
+
+Developed by [kernel web](http://kerweb.ru/)
