@@ -14,7 +14,7 @@
                     id="<%= id %>"
                     name="settings[managers_roles][]"
                     value="<%= role.name %>"
-                    <% if Setting.plugin_centosadmin_redmine_plugin['managers_roles'].include? role.name %>
+                    <% if Setting.plugin_redmine_centosadmin_timing['managers_roles'].include? role.name %>
                       checked=true
                     <% end %>
                   >
