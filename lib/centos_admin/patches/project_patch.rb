@@ -19,10 +19,10 @@ module CentosAdmin
         end
 
         def has_little_time?
-          time_reserve != 0 && time_remanining < 2.0
+          time_reserve != 0 && time_remain < 2.0
         end
 
-        def time_remanining
+        def time_remain
           time_reserve - time_entries.sum(:hours)
         end
       end

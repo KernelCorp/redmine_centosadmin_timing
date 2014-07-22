@@ -13,6 +13,8 @@ module CentosAdmin
 
       module InstanceMethods
         def check_project_time_reserve
+          return unless project.module_enabled?(:centosadmin_timing)
+          
           if project.has_little_time? != project.time_reminder_sended
             unless project.time_reminder_sended
               CentosAdmin::TimeMailer.little_time(project).deliver
