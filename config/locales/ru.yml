@@ -1,4 +1,5 @@
 ru:
+  permission_centos_view_timing: Видеть установленное и оставшееся время
   project_module_centosadmin_timing: Тайминг
   centos_admin:
     managers_roles: Уведомлять

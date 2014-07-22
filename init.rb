@@ -18,5 +18,7 @@ Redmine::Plugin.register :redmine_centosadmin_timing do
   author_url 'http://centos-admin.ru/'
   settings default: { 'managers_roles' => 'Manager' }, partial: 'settings/centosadmin_redmine_settings'
 
-  project_module :centosadmin_timing
+  project_module :centosadmin_timing do
+    permission :centos_view_timing, {}
+  end
 end
