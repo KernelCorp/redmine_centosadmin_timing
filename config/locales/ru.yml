@@ -1,4 +1,8 @@
 ru:
+  project_module_centosadmin_timing: Тайминг
   centos_admin:
     managers_roles: Уведомлять
+    project:
+      time_reserve: План
+      time_remain: Осталось
   field_time_reserve: Запас времени

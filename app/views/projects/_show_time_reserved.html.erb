@@ -1,0 +1,14 @@
+<% if project.module_enabled?(:centosadmin_timing) && project.time_reserve != 0.0 %>
+  <table>
+    <tbody>
+      <tr>
+        <td><%= t('centos_admin.project.time_reserve') %></td>
+        <td><span class="icon icon-time"><%= l_hours(project.time_reserve) %></span></td>
+      </tr>
+      <tr>
+        <td><%= t('centos_admin.project.time_remain') %></td>
+        <td><span class="icon icon-time"><%= l_hours(project.time_remain) %></span></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
