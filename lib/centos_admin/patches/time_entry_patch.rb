@@ -21,6 +21,8 @@ module CentosAdmin
               project.update_attributes! time_reminder_sended: true
             end
           end
+        rescue => e
+          logger.error e.message + "\n  " + e.backtrace.join("\n  ")
         end
       end
     end    
